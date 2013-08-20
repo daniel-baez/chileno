@@ -22,7 +22,7 @@ in your project.clj:
 (rut/make "11.111.111" "1")
 ;; or
 (rut/make "11111111-1")
-;; when the rut is valid it will yield a record like {:rut "11111111" :dv "1"}
+;; when the rut is valid it will yield a record chileno.core.Rut{:run "11111111", :dv "1"}
 ;; otherwise it will return an empty map {}
 
 ```
