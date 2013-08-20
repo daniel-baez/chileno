@@ -7,23 +7,23 @@ Chileno is a clojure implementation of [chilean RUT](http://en.wikipedia.org/wik
 in your project.clj:
 
 ```clojure
-[log4j "1.2.15" :exclusions [javax.mail/mail
-                            javax.jms/jms
-                            com.sun.jdmk/jmxtools
-                            com.sun.jmx/jmxri]]
+[chileno "0.1.0"]
+
 ```
 
 ## Examples 
 
 ```clojure
 
-(use 'korma.db)
-(defdb db (postgres {:db "mydb"
-                     :user "user"
-                     :password "dbpass"}))
+(require '[chileno.core :as rut])
 
-(use 'korma.core)
-(defentity users)
+(rut/make "11.111.111-1")
+;; or
+(rut/make "11.111.111" "1")
+;; or
+(rut/make "11111111-1")
+;; when the rut is valid it will yield a record like {:rut "11111111" :dv "1"}
+;; otherwise it will return an empty map {}
 
 ```
 
