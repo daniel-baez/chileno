@@ -8,9 +8,9 @@
     (str (:run this) \- (:dv this))))
 
 (defn clean [rut]
-  (.. rut
-      toUpperCase
-      (replaceAll (str #"[^\dK]") "")))
+  (-> rut
+      (str/upper-case)
+      (str/replace #"[^\dK]" "")))
 
 (defn form? [rut]
   (if (not (str/blank? rut))
@@ -28,6 +28,14 @@
        (apply make (split rut))
        {}))
   ([run dv]
-     (if (dv/check run dv)
-       (->Rut run dv)
-       {})))
+     (let [run (clean run)
+           dv (clean dv)]
+       (if (and
+            (form? (str run dv))
+            (dv/check run dv))
+         (->Rut run dv)
+         {}))))
+
+(defn valid?
+  [& args]
+  (not (empty? (apply make args))))
