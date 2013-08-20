@@ -1,13 +1,32 @@
 # chileno
 
-A Clojure library designed to ... well, that part is up to you.
+Chileno is a clojure implementation of [chilean RUT](http://en.wikipedia.org/wiki/Rol_%C3%9Anico_Tributario#Chile)
 
 ## Usage
 
-FIXME
+in your project.clj:
+
+```clojure
+[log4j "1.2.15" :exclusions [javax.mail/mail
+                            javax.jms/jms
+                            com.sun.jdmk/jmxtools
+                            com.sun.jmx/jmxri]]
+```
+
+## Examples 
+
+```clojure
+
+(use 'korma.db)
+(defdb db (postgres {:db "mydb"
+                     :user "user"
+                     :password "dbpass"}))
+
+(use 'korma.core)
+(defentity users)
+
+```
 
 ## License
-
-Copyright © 2013 FIXME
 
 Distributed under the Eclipse Public License, the same as Clojure.
