@@ -7,7 +7,7 @@ Chileno is a clojure implementation of [chilean RUT](http://en.wikipedia.org/wik
 in your project.clj:
 
 ```clojure
-[chileno "0.1.0"]
+[chileno "0.1.1"]
 
 ```
 
@@ -24,6 +24,9 @@ in your project.clj:
 (rut/make "11111111-1")
 ;; when the rut is valid it will yield a record chileno.core.Rut{:run "11111111", :dv "1"}
 ;; otherwise it will return an empty map {}
+
+
+;; there is also a predicate rut/valid? that will return true for the same parameters that rut/make would have returned a record
 
 ```
 
