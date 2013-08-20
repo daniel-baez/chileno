@@ -1,0 +1,33 @@
+(ns chileno.core
+  (:require [clojure.string :as str]
+            [chileno.dv :as dv]))
+
+(defrecord Rut [run dv]
+  Object
+  (toString [this]
+    (str (:run this) \- (:dv this))))
+
+(defn clean [rut]
+  (.. rut
+      toUpperCase
+      (replaceAll (str #"[^\dK]") "")))
+
+(defn form? [rut]
+  (if (not (str/blank? rut))
+    (re-matches #"^\d+K?$" (clean rut))
+    false))
+
+(defn split [rut]
+  (let [cleaned (clean rut)]
+    [(apply str (drop-last cleaned)) 
+     (str/upper-case (last cleaned))]))
+
+(defn make
+  ([rut]
+     (if (form? rut)
+       (apply make (split rut))
+       {}))
+  ([run dv]
+     (if (dv/check run dv)
+       (->Rut run dv)
+       {})))
