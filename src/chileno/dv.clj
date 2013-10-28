@@ -2,7 +2,7 @@
 
 (defn mod-11 [run]
   (let [mults (cycle (range 2 8))]
-    (->> (reverse run)
+    (->> (reverse (str run))
          (map #(Integer/parseInt (str %)))
          (map * mults)
          (reduce +)
@@ -10,11 +10,10 @@
          (- 11))))
 
 (defn make [run]
-  (let [raw (mod-11 run)]
-    (cond
-     (= 11 raw) "0"
-     (= 10 raw) "K"
-     :default (str raw))))
+  (let [raw (mod (mod-11 run) 11)]
+    (if (= 10 raw)
+     "K"
+     (str raw))))
 
 (defn check [run dv]
   (= (str dv) (make run)))
