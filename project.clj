@@ -1,4 +1,4 @@
-(defproject chileno "0.1.1"
+(defproject chileno "0.1.2"
   :description "Chilean RUT impl in clojure"
   :url "https://github.com/daplay/chileno"
   :license {:name "Eclipse Public License"
