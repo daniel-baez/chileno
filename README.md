@@ -1,6 +1,8 @@
 # chileno
 
 Chileno is a clojure implementation of [chilean RUT](http://en.wikipedia.org/wiki/Rol_%C3%9Anico_Tributario#Chile)
+if you are looking for a pure Java implementation, [look here](https://github.com/daplay/jru/)
+
 
 ## Usage
 
